@@ -1,1 +1,1 @@
-# budget-bot
+# Budget bot
