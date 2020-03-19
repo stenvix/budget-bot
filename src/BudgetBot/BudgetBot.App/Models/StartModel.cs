@@ -1,8 +1,6 @@
-﻿using Telegram.Bot.Types.ReplyMarkups;
-
-namespace BudgetBot.App.Models
+﻿namespace BudgetBot.App.Models
 {
-    public class StartModel : KeyboardModel
+    public class StartModel : InlineReplyModel
     {
     }
 }

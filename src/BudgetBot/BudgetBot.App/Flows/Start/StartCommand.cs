@@ -1,7 +1,7 @@
 ﻿using BudgetBot.App.Models;
 using MediatR;
 
-namespace BudgetBot.App.Commands
+namespace BudgetBot.App.Flows.Start
 {
     public class StartCommand : IRequest<StartModel>
     {

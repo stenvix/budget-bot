@@ -1,14 +1,11 @@
-﻿using System;
-using System.IO;
-using System.Reflection.Metadata.Ecma335;
-using System.Threading.Tasks;
-using BudgetBot.App.Commands;
+﻿using System.Threading.Tasks;
+using BudgetBot.App.Flows.Start;
 using BudgetBot.App.Settings;
+using BudgetBot.App.State;
+using BudgetBot.App.State.Implementations;
 using MediatR;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Hosting.Internal;
 using Serilog;
 
 namespace BudgetBot.App
@@ -29,9 +26,11 @@ namespace BudgetBot.App
             });
             hostBuilder.ConfigureServices((context, services) =>
             {
+                services.AddSingleton<IChatStateManager, ChatStateManager>();
                 services.Configure<TelegramSettings>(context.Configuration.GetSection("Telegram"));
                 services.AddHostedService<BotService>();
                 services.AddMediatR(typeof(StartCommand));
+                services.AddMemoryCache();
             });
 
             return hostBuilder;
